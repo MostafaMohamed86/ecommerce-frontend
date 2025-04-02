@@ -76,7 +76,7 @@ const CartSubtotalPrice = ({
       </Modal>
       <div className={styles.container}>
         <span>Subtotal: </span>
-        <span>{subtotal} EGP</span>
+        <span>{subtotal.toFixed(2)} EGP</span>
       </div>
       {userAccessToken && (
         <div className={styles.container}>

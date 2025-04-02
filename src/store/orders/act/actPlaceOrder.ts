@@ -11,11 +11,11 @@ const actPlaceOrder = createAsyncThunk("orders/actPlaceOrder", async (subtotal:n
         id: el.id,
         title: el.title,
         price: el.price,
-        img: el.img,
+        image: el.image,
         quantity: cart.items[el.id]
     }))
     try {
-        const response = await axios.post("orders", {
+        const response = await axios.post("https://67cf29c0823da0212a81ac7f.mockapi.io/orders", {
             userId: auth.user?.id,
             items: orderItems,
             subtotal,

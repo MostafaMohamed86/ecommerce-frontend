@@ -45,7 +45,7 @@ const Register = () => {
               register={register}
               error={
                 formErrors.email?.message
-                  ? formErrors.email?.message
+                  ? formErrors.email?.message // required error message
                   : emailAvailabilityStatus === "notAvailable"
                   ? "This email is already in use."
                   : emailAvailabilityStatus === "failed"

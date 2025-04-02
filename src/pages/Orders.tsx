@@ -25,7 +25,7 @@ const Orders = () => {
             <ProductInfo
               key={el.id}
               title={el.title}
-              img={el.img}
+              image={el.image}
               price={el.price}
               quantity={el.quantity}
               direction="column"
@@ -45,7 +45,7 @@ const Orders = () => {
             </tr>
           </thead>
           <tbody>
-            {orderList.map((el) => (
+            {orderList.map((el) => ( // id, userId, items, subtotal
               <tr key={el.id}>
                 <td>#{el.id}</td>
                 <td>

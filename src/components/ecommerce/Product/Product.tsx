@@ -16,8 +16,8 @@ const Product = memo(
     id,
     title,
     price,
-    img,
-    max,
+    image,
+    rating,
     quantity,
     isLiked,
     isAuthenticated,
@@ -30,8 +30,10 @@ const Product = memo(
 
     const [isLoading, setIsLoading] = useState(false);
 
+    const max = rating?.count ?? 0;
     const currentRemainingQuantity = max - (quantity ?? 0);
     const quantityReachedToMax = currentRemainingQuantity == 0 ? true : false;
+
     const addToCartHandler = () => {
       dispatch(addToCart(id));
       dispatch(
@@ -55,6 +57,7 @@ const Product = memo(
         );
         setISBtnDisabled(true);
       }
+      setISBtnDisabled(true);
     };
 
     useEffect(() => {
@@ -107,7 +110,7 @@ const Product = memo(
             You need to login first to add this item to your wishlist.
           </Modal.Body>
         </Modal>
-        <ProductInfo title={title} price={price} img={img}>
+        <ProductInfo title={title} price={price} image={image}>
           <div className={wishlistBtn} onClick={likeToggleHandler}>
             {isLoading ? (
               <Spinner animation="border" size="sm" variant="primary" />

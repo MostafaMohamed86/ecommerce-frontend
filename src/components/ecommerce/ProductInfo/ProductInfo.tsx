@@ -1,7 +1,7 @@
 import styles from "./styles.module.css"
 type ProductInfoProps = {
   title: string;
-  img: string;
+  image: string;
   price: number;
   quantity?: number;
   direction?: "row" | "column";
@@ -10,7 +10,7 @@ type ProductInfoProps = {
 };
 const ProductInfo = ({
   title,
-  img,
+  image,
   price,
   quantity,
   direction = "row",
@@ -20,7 +20,7 @@ const ProductInfo = ({
   return (
   <div className={`${styles[`product-${direction}`]}`} style={style}>
   <div className={`${styles[`productImg-${direction}`]}`}>
-    <img src={img} alt={title}/>
+    <img src={image} alt={title}/>
   </div>
   <div className={`${styles[`productInfo-${direction}`]}`}>
     <h2 title={title}>{title}</h2>

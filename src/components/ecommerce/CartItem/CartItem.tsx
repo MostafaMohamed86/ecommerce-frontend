@@ -8,8 +8,9 @@ type CartItemProps = TProduct & {
   changeQuantityHandler: (id: number, quantity: number) => void;
   removeItemHandler: (id: number) => void;
 };
-const CartItem = memo(({ id ,title, price, img, max, quantity, changeQuantityHandler, removeItemHandler }: CartItemProps) => {
+const CartItem = memo(({ id ,title, price, image, max, quantity, changeQuantityHandler, removeItemHandler }: CartItemProps) => {
     const { cartItem, cartItemSelection} = styles;
+    console.log(max);
     const renderOptions = Array(max)
     .fill(0)
     .map((_, idx) => {
@@ -22,7 +23,7 @@ const CartItem = memo(({ id ,title, price, img, max, quantity, changeQuantityHan
     }
   return (
     <div className={cartItem}>
-      <ProductInfo title={title} price={price} img={img} direction="column">
+      <ProductInfo title={title} price={price} image={image} direction="column">
         <Button variant="secondary" style={{color: "white", width: "100px"}} className='mt-auto' onClick={() => removeItemHandler(id)}>Remove</Button>
         </ProductInfo>
       

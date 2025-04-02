@@ -9,6 +9,7 @@ import {
 import { resetOrderStatus } from "@store/orders/ordersSlice";
 const useCart = () => {
   const dispatch = useAppDispatch();
+  const MAX_LIMIT = 50;
   const { items, productsFullInfo, loading, error } = useAppSelector(
     (state) => state.cart
   );
@@ -19,6 +20,7 @@ const useCart = () => {
   const products = productsFullInfo.map((product) => ({
     ...product,
     quantity: items[product.id],
+    max: Math.min(product.rating?.count || 10, MAX_LIMIT),
   }));
 
   const changeQuantityHandler = useCallback(

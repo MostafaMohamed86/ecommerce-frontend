@@ -12,11 +12,14 @@ const actGetOrders = createAsyncThunk(
     const { auth } = getState() as RootState;
     try {
       const response = await axios.get<TResponse>(
-        `/orders?userId=${auth.user?.id}`,
+        `https://67cf29c0823da0212a81ac7f.mockapi.io/orders?userId=${auth.user?.id}`,
         { signal }
       );
       return response.data;
     } catch (error) {
+      if(axios.isAxiosError(error) && error.response?.status === 404){
+        return []; 
+      }
       return rejectWithValue(axiosErrorHandler(error));
     }
   }

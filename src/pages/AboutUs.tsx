@@ -1,10 +1,10 @@
+import About from "@components/ecommerce/About/About"
+
 
 
 const AboutUs = () => {
   return (
-    <div>
-      about us
-    </div>
+    <About />
   )
 }
 

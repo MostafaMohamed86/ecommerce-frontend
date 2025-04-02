@@ -11,7 +11,7 @@ const useCheckEmailAvailability = () => {
     setEnteredEmail(email);
     setEmailAvailabilityStatus("checking");
     try {
-      const response = await axios.get(`/users?email=${email}`);
+      const response = await axios.get(`https://ecommerce-backend-production-b0a9.up.railway.app/users?email=${email}`);
       if (!response.data.length) {
         setEmailAvailabilityStatus("available");
       } else {

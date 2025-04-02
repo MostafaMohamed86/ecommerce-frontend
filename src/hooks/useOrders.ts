@@ -14,7 +14,7 @@ const useOrders = () => {
     const productDetails = orderList.find((order) => order.id === id); // bring data by id
     const newItems = productDetails?.items ?? []; // array of object [{}]
     setShowModal(true);
-    setSelectedProduct((prev) => [...prev, ...newItems]); // [{id:1,title:'product1',price:10,img:"url1"}, {id}]
+    setSelectedProduct(newItems); // [{id:1,title:'product1',price:10,img:"url1"}, {id}]
   };
 
   const closeModalHandler = () => {
