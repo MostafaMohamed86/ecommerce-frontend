@@ -9,7 +9,7 @@ export type TProduct = {
     cat_prefix?: string;
     image: string;
     quantity?: number;
-    max: number;
+    max?: number;
     rating?: TRating;
     isLiked?: boolean;
     isAuthenticated?: boolean;
