@@ -1,20 +1,22 @@
 .toastList {
-    position: absolute;
+    position: fixed;  /* تغييرها لـ fixed بدل absolute */
     right: 10px;
-    bottom: 50px;
+    bottom: 50px;  /* المسافة من أسفل الصفحة */
     width: 400px;
+    z-index: 9999;  /* علشان تكون فوق باقي المحتويات */
 }
 
 .toastItem {
     position: relative;
     overflow: hidden;
 }
-.toastItem h5{
+
+.toastItem h5 {
     font-size: 16px;
     text-transform: capitalize;
 }
 
-.toastItem p{
+.toastItem p {
     font-size: 15px;
     margin-bottom: 0;
     text-transform: capitalize;
