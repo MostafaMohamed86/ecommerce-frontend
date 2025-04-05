@@ -5,12 +5,14 @@ import TableSkeleton from "../skeletons/TableSkeleton/TableSkeleton";
 import { TLoading } from "@types"
 import React from "react";
 import LottieHandler from "../LottieHandler/LottieHandler";
+import HomeSkeleton from "../skeletons/HomeSkeleton/HomeSkeleton";
 
 const skeletonsTypes = {
     category: CategorySkeleton,
     product: ProductSkeleton,
     cart: CartSkeleton,
-    table: TableSkeleton
+    table: TableSkeleton,
+    home: HomeSkeleton
 }
 type LoadingProps = {
     status: TLoading;

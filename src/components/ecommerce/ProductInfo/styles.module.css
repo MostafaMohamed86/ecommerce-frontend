@@ -15,7 +15,7 @@
 
 .productImg-column img {
   height: 150px;
-  width: 150px;
+  width: 130px;
   margin-right: 10px;
   background-color: #f2f2f2;
   display: block;
@@ -62,5 +62,26 @@
 }
 
 .productInfo-row {
-    width: 100%;
+  width: 100%;
+}
+
+@media (max-width: 600px) {
+  
+
+  .product-column h2,
+  .product-column h3 {
+    font-size: 14px;
   }
+  
+  /* row */
+
+  .product-row h2,
+  .product-row h3 {
+    font-size: 14px;
+  }
+
+  .productInfo-row {
+    width: 100%;
+    text-align: center;
+  }
+}
