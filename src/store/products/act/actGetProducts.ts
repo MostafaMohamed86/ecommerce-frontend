@@ -25,7 +25,7 @@ const actGetProductsSlice = createAsyncThunk(
           signal,
         }
       );
-      console.log(response.data);
+      
       return response.data // action.payload
     } catch (error) {
       return rejectWithValue(axiosErrorHandler(error));

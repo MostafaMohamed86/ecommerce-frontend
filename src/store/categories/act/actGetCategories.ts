@@ -42,7 +42,6 @@ const actGetCategories = createAsyncThunk(
           prefix: mapped.prefix,
         };
       });
-
       return records; // action.payload for state.records
     } catch (error) {
       return rejectWithValue(axiosErrorHandler(error));
