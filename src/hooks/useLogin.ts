@@ -4,13 +4,15 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { signInSchema, signInType } from "@validations/signInSchema";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const useLogin = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  const { error, loading, accessToken } = useAppSelector((state) => state.auth);
+  const { loading, accessToken } = useAppSelector((state) => state.auth);
+  const [error, setError] = useState<string | null>(null);
+
   const {
     register,
     handleSubmit,
@@ -19,11 +21,22 @@ const useLogin = () => {
     mode: "onBlur",
     resolver: zodResolver(signInSchema),
   });
-  const submitForm: SubmitHandler<signInType> = (data) => {
-    if (searchParams.get("message")) setSearchParams("");
-    dispatch(actAuthLogin(data))
-      .unwrap()
-      .then(() => navigate("/"));
+
+  const submitForm: SubmitHandler<signInType> = async (data) => {
+    try {
+      if (searchParams.get("message")) {
+        setSearchParams("");
+      }
+
+      setError(null);
+
+      await dispatch(actAuthLogin(data))
+        .unwrap()
+        .then(() => navigate("/"));
+        
+    } catch (error) {
+      setError(typeof error === "string" ? error : "invalid email or password");
+    }
   };
 
   useEffect(() => {
@@ -31,6 +44,7 @@ const useLogin = () => {
       dispatch(resetUI());
     };
   }, [dispatch]);
+
   return {
     error,
     loading,
@@ -39,7 +53,7 @@ const useLogin = () => {
     searchParams,
     register,
     handleSubmit,
-    submitForm
+    submitForm,
   };
 };
 
