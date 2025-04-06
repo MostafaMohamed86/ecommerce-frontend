@@ -2,6 +2,8 @@ import { Button, Col, Row } from "react-bootstrap";
 import ContentLoader from "react-content-loader";
 import styles from "./styles.module.css";
 import { TLoading, TProduct } from "@types";
+import { useNavigate } from "react-router-dom";
+
 
 const {
   homeContainer,
@@ -17,6 +19,7 @@ type HomeProps = {
   status?: TLoading;
 };
 const HomeSkeleton = ({ allProducts = [], status = "pending" }: HomeProps) => {
+  const navigate = useNavigate();
   const renderSkeleton = Array(3)
     .fill(0)
     .map((_, idx) => (
@@ -51,7 +54,7 @@ const HomeSkeleton = ({ allProducts = [], status = "pending" }: HomeProps) => {
       <div className={welcomeSection}>
         <h1>Welcome to Our eCom</h1>
         <p>Find the best deals on top products</p>
-        <Button variant="info">Shop Now</Button>
+        <Button variant="info" onClick={() => navigate("/categories")}>Shop Now</Button>
       </div>
 
       {/* قسم المنتجات الأكثر مبيعًا */}

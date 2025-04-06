@@ -23,20 +23,20 @@ const useLogin = () => {
   });
 
   const submitForm: SubmitHandler<signInType> = async (data) => {
-    try {
-      if (searchParams.get("message")) {
-        setSearchParams("");
-      }
-
-      setError(null);
-
-      await dispatch(actAuthLogin(data))
-        .unwrap()
-        .then(() => navigate("/"));
-        
-    } catch (error) {
-      setError(typeof error === "string" ? error : "invalid email or password");
+    if (searchParams.get("message")) {
+      setSearchParams("");
     }
+
+    setError(null);
+
+    await dispatch(actAuthLogin(data))
+      .unwrap()
+      .then(() => navigate("/"))
+      .catch((error) => {
+        setError(
+          typeof error === "string" ? error : "Invaild email or password"
+        );
+      });
   };
 
   useEffect(() => {
